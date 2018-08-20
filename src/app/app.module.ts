@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { MyServiceService } from './my-service.service';
-import { HttpModule } from '@angular/http';
+import { HttpErrorHandler } from './http-error-handler.service';
+import { MessageService }  from './message.service';
 
 @NgModule({
   declarations: [
@@ -11,8 +12,8 @@ import { HttpModule } from '@angular/http';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    HttpModule
+    HttpClientModule
+
   ],
   providers: [MyServiceService],
   bootstrap: [AppComponent]

@@ -2,7 +2,7 @@
 <div class="container">
   <h2 class="header">Result</h2>
   <div class="search-box">
-    <input class="text" type="text" autofocus="true" placeholder="Listenning ...">
+    <input class="text" type="text" autofocus="true" placeholder= "Listennig ..." value={{test}}  >
   </div>
 </div>
 <div class="recorder_wrapper">
@@ -16,37 +16,37 @@
 
   <section>
     <h2>Tags</h2>
-    <button class="btn btn-green btn-border-o" (click)="send('bed')">Bed</button>
-    <button class="btn btn-blue btn-border-o">Bird</button>
-    <button class="btn btn-purple btn-border-o">Cat</button>
-    <button class="btn btn-navy btn-border-o">Dog</button>
-    <button class="btn btn-orange btn-border-o">Down</button>
-    <button class="btn btn-red btn-border-o">Eight</button>
-    <button class="btn btn-purplee btn-border-o">Five</button>
-    <button class="btn btn-navy btn-border-o">Four</button>
-    <button class="btn btn-orange btn-border-o">Go</button>
-    <button class="btn btn-red btn-border-o">Happy</button>
+    <button class="btn btn-green btn-border-o" (click)="rec()">Bed</button>
+    <button class="btn btn-blue btn-border-o" (click)="send('bird')">Bird</button>
+    <button class="btn btn-purple btn-border-o" (click)="send('cat')">Cat</button>
+    <button class="btn btn-navy btn-border-o" (click)="send('dog')">Dog</button>
+    <button class="btn btn-orange btn-border-o" (click)="send('down')">Down</button>
+    <button class="btn btn-red btn-border-o" (click)="send('eight')">Eight</button>
+    <button class="btn btn-purplee btn-border-o" (click)="send('five')">Five</button>
+    <button class="btn btn-navy btn-border-o" (click)="send('four')">Four</button>
+    <button class="btn btn-orange btn-border-o" (click)="send('go')">Go</button>
+    <button class="btn btn-red btn-border-o" (click)="send('happy')">Happy</button>
 
-    <button class="btn btn-green btn-border-o">House</button>
-    <button class="btn btn-blue btn-border-o">Left</button>
-    <button class="btn btn-purple btn-border-o">Marvin</button>
-    <button class="btn btn-navy btn-border-o">Nine</button>
-    <button class="btn btn-orange btn-border-o">No</button>
-    <button class="btn btn-red btn-border-o">Off</button>
-    <button class="btn btn-purplee btn-border-o">On</button>
-    <button class="btn btn-navy btn-border-o">One</button>
-    <button class="btn btn-orange btn-border-o">Right</button>
-    <button class="btn btn-red btn-border-o">Seven</button>
+    <button class="btn btn-green btn-border-o" (click)="send('house')">House</button>
+    <button class="btn btn-blue btn-border-o" (click)="send('left')">Left</button>
+    <button class="btn btn-purple btn-border-o" (click)="send('marvin')">Marvin</button>
+    <button class="btn btn-navy btn-border-o" (click)="send('nine')">Nine</button>
+    <button class="btn btn-orange btn-border-o" (click)="send('no')">No</button>
+    <button class="btn btn-red btn-border-o" (click)="send('off')">Off</button>
+    <button class="btn btn-purplee btn-border-o" (click)="send('on')">On</button>
+    <button class="btn btn-navy btn-border-o" (click)="send('one')">One</button>
+    <button class="btn btn-orange btn-border-o" (click)="send('right')">Right</button>
+    <button class="btn btn-red btn-border-o" (click)="send('seven')">Seven</button>
 
-    <button class="btn btn-green btn-border-o">Sheila</button>
-    <button class="btn btn-blue btn-border-o"> Six</button>
-    <button class="btn btn-purple btn-border-o">Stop</button>
-    <button class="btn btn-navy btn-border-o">Three </button>
-    <button class="btn btn-orange btn-border-o">Tree</button>
-    <button class="btn btn-red btn-border-o">Two</button>
-    <button class="btn btn-purplee btn-border-o">Up</button>
-    <button class="btn btn-navy btn-border-o"> Wow</button>
-    <button class="btn btn-orange btn-border-o">Yes</button>
-    <button class="btn btn-red btn-border-o">Zero</button>
+    <button class="btn btn-green btn-border-o" (click)="send('sheila')">Sheila</button>
+    <button class="btn btn-blue btn-border-o" (click)="send('six')"> Six</button>
+    <button class="btn btn-purple btn-border-o" (click)="send('stop')">Stop</button>
+    <button class="btn btn-navy btn-border-o" (click)="send('three')">Three </button>
+    <button class="btn btn-orange btn-border-o" (click)="send('tree')">Tree</button>
+    <button class="btn btn-red btn-border-o" (click)="send('two')">Two</button>
+    <button class="btn btn-purplee btn-border-o" (click)="send('up')">Up</button>
+    <button class="btn btn-navy btn-border-o" (click)="send('wow')"> Wow</button>
+    <button class="btn btn-orange btn-border-o" (click)="send('yes')">Yes</button>
+    <button class="btn btn-red btn-border-o" (click)="send('zero')">Zero</button>
   </section>
   </div>

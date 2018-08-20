@@ -1,59 +1,43 @@
 import { Injectable } from '@angular/core';
-import {  Response, RequestOptions, Headers} from '@angular/http';
-import { Http } from  '@angular/http'; 
+import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/throw';
-import { HttpHeaders } from '@angular/common/http'; 
-import {Path} from './Path'
 
-@Injectable({
-  providedIn: 'root'
-})
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { Path } from './path';
+
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Authorization': 'my-auth-token'
+  })
+};
+
+@Injectable()
 export class MyServiceService {
-  
-constructor(private http: Http) {
-
-   }
-   private Url = 'http://localhost:5000/api/getPath';
-   
-   sendPath(audio : Path) : Observable<Path> {
-      //let pathString = JSON.stringify(audio); // Stringify payload
-    
-      
-      //console.log('second test '+this.audio.path);
-      //return this.http.post<Path>(this.Url, this.audio)//
-
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-    console.log ('second test '+audio.path);
-    return this.http.post(this.Url, audio, options)
-                   .map(this.extractData);
-
-}
-
-getResult(): Observable<Path> {
-  return this.http.get(this.Url)
-  .map(this.extractData)
-  .catch(this.handleErrorObservable);
-}
-
-private extractData(res: Response) {
-  let body = res.json();
-        console.log ('succes');
-        return body || {};
-    }
-    private handleErrorObservable (error: Response | any) {
-      console.error(error.message || error);
-      return Observable.throw(error.message || error);
-  } 
-
-}
+  pathUrl = ' http://127.0.0.1:5000/api/getPath';  // URL to web api
 
 
+  constructor(
+    private http: HttpClient){}
+    public handleError(error: Response) {
+        console.error(error);
+        return Observable.throw(error.json()|| 'Server error');
+      }
 
+  sendPath (path: Path): Observable<Path> {
+    return this.http.post<Path>(this.pathUrl, path, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 
+  getRes (): Observable<Path[]> {
+    return this.http.get<Path[]>(this.pathUrl)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 }

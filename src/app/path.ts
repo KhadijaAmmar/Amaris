@@ -1,7 +1,6 @@
-export class Path {
+export interface Path {
    
-    public path: string
-    
-    constructor() { 
-    }
-}
+    path: string
+ 
+ }
+ 

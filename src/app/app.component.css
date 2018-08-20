@@ -163,7 +163,11 @@ html {
     margin: auto;
     
   }
-  
+  input {
+    font-size: 100%;
+    margin-bottom: 2px;
+    width: 11em;
+  }
   .text {
     width: 100%;
     margin: auto;

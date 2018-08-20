@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {MyServiceService} from './my-service.service'
-import { Path } from './Path';
+import { Path } from './path';
 
 
 @Component({
@@ -11,19 +11,24 @@ import { Path } from './Path';
 export class AppComponent {
   title = 'app-Rec-voc';
   errorMessage : String;
-  path = new Path();
+  path : Path[];
+  test : string;
   constructor(private serv : MyServiceService) {}
   ngOnInit(): void {
-
   }
   
-  send(name):void{
-this.path.path=name;
-console.log(this.path.path);
- this.serv.sendPath(this.path).subscribe( path => {
-                                          console.log('path: '+path);
-                                          this.path = path;},
-  error => this.errorMessage = <any>error);      ;
-      }
+  send(path : string):void{
+path = path.trim();
+const pathh =  { path } as Path;
+
+//this.serv.sendPath(pathh).subscribe(pathaudio => this.path.push(pathaudio));
+this.serv.sendPath(pathh).subscribe(val => this.test=val["prediction"]);
+
+
   }
+rec():void{
+  console.log(this.serv.getRes().subscribe(val => console.log(val)));
+}
+
+}
 
