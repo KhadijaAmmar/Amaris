@@ -7,8 +7,10 @@
 </div>
 <div class="recorder_wrapper">
   <div class="recorder">
-      <button class="record_btn" id="button" ></button>
-      <p id="msg_box"></p>
+      <button class="record_btn" id="button" (click)="record()"></button>
+      <p [(innerHTML)]="msg_box"></p>
+    
+     
   </div>
 </div>
 
@@ -16,7 +18,7 @@
 
   <section>
     <h2>Tags</h2>
-    <button class="btn btn-green btn-border-o" (click)="rec()">Bed</button>
+    <button class="btn btn-green btn-border-o" (click)="rec('bed')">Bed</button>
     <button class="btn btn-blue btn-border-o" (click)="send('bird')">Bird</button>
     <button class="btn btn-purple btn-border-o" (click)="send('cat')">Cat</button>
     <button class="btn btn-navy btn-border-o" (click)="send('dog')">Dog</button>
