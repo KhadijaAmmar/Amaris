@@ -3,6 +3,7 @@ import {MyServiceService} from './my-service.service'
 import { Path } from './path';
 
 
+
 declare var test: any;
 
 @Component({
@@ -44,7 +45,17 @@ rec():void{
 }
 
 f(){
-  new test();
+ 
+  if ( this.btn_status == true ) {
+    new start();
+    
+} else if ( this.btn_status == false) {
+    new stop();
+
+    
+}
+this.btn_status = (!this.btn_status);
+console.log(this.btn_status);
 }
 
 }
