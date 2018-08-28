@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { MyServiceService } from './my-service.service';
-import { RecorderService } from './recorder.service';
+
 
 @NgModule({
   declarations: [
@@ -14,8 +14,8 @@ import { RecorderService } from './recorder.service';
     HttpClientModule
 
   ],
-  providers: [MyServiceService,
-             RecorderService],
+  providers: [MyServiceService
+             ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
