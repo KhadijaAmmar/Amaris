@@ -47,15 +47,16 @@ rec():void{
 f(){
  
   if ( this.btn_status == true ) {
-    new start();
-    
-} else if ( this.btn_status == false) {
-    new stop();
+    new testR();
 
+} else if ( this.btn_status == false) {
+    new stopR();
     
 }
 this.btn_status = (!this.btn_status);
 console.log(this.btn_status);
+
+//this.send('');
 }
 
 }
