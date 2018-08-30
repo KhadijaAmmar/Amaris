@@ -8,7 +8,7 @@ var input; //MediaStreamAudioSourceNode we'll be recording
 // shim for AudioContext when it's not avb. 
 
 
-function testR() {
+function test() {
     var AudioContext = window.AudioContext || window.webkitAudioContext;
 var audioContext = new AudioContext;
     console.log("recordButton clicked");
@@ -50,12 +50,15 @@ var audioContext = new AudioContext;
     });
 }
 
-function stopR() {
+function stop() {
     console.log("stopButton clicked");
     rec.stop();
     gumStream.getAudioTracks()[0].stop();
+    file_name= Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);;
     rec.exportWAV(createDownloadLink);
-}
+    console.log(file_name);
+    return file_name;
+    } 
 
 function createDownloadLink(blob) {
  
@@ -70,7 +73,7 @@ function createDownloadLink(blob) {
  
     //link the a element to the blob
     link.href = url;
-    link.download = new Date().toISOString() + '.wav';
+    link.download = file_name + '.wav';
     //link.innerHTML = link.download;
     console.log("I m here")
     //add the new audio and a elements to the li element

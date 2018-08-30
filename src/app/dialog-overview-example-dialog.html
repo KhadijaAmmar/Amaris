@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Hi</h1>
+<div mat-dialog-content>
+  <p>Do you want to add it to the dataset?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.path">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.path" cdkFocusInitial>Ok</button>
+</div>
