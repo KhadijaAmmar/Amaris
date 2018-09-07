@@ -16,10 +16,11 @@ export class AppComponent {
   title = 'app-Rec-voc';
   errorMessage : String;
   path : Path[];
+  result : Path[];
   test : string;
   btn_status : boolean;
   fileName : any;
-  
+  classe : Path;
 
 
 
@@ -28,22 +29,38 @@ export class AppComponent {
     this.btn_status=true;
   }
 
-
+  
+  savaAudio(path : Path):void{
+    //path = path.trim();
+    const pathh =  { path } as Path;
+    
+    //this.serv.sendPath(pathh).subscribe(pathaudio => this.path.push(pathaudio));
+    this.serv.moveFile(pathh).subscribe();
+    
+    
+      }
   
   
 
   
-send(path : string):void{
+record(path : string):void{
 path = path.trim();
 const pathh =  { path } as Path;
 
 //this.serv.sendPath(pathh).subscribe(pathaudio => this.path.push(pathaudio));
 this.serv.sendPath(pathh).subscribe(val => this.test=val["prediction"]);
-
-
   }
-rec():void{
-  console.log(this.serv.getRes().subscribe(val => console.log(val)));
+
+
+
+
+
+sendLabel(path : string):void{
+  path = path.trim();
+  const pathh =  { path } as Path;
+
+  //this.serv.sendPath(pathh).subscribe(pathaudio => this.path.push(pathaudio));
+  this.serv.sendPathTest(pathh).subscribe(val => this.test=val["prediction"]);
 }
 
 
@@ -51,12 +68,23 @@ rec():void{
 openDialog(): void {
   const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
     width: '250px',
-    data: {label: this.path}
+    data: {label: this.classe}
   });
 
   dialogRef.afterClosed().subscribe(result => {
     console.log('The dialog was closed');
-    this.path = result;
+    this.classe = result;
+    console.log(this.classe)
+    
+    if (result){
+      console.log("succes: "+this.classe);
+      this.savaAudio(this.classe);
+      console.log("succes")
+    }
+    else {
+      console.log("cancel")
+
+    }
   });
 }
 
@@ -67,13 +95,15 @@ f(){
     new test();
 
 } else if ( this.btn_status == false) {
-    new stop();
-    this.openDialog();
-    this.btn_status = (!this.btn_status);
+    this.fileName= stop();
+    setTimeout(() => {
+      this.openDialog();
+    }, 2000);  
+    
 
 setTimeout(() => {
 console.log('Test');
-this.send(this.fileName);
+this.record(this.fileName);
 }, 1000);
 console.log('send');
     
@@ -81,7 +111,6 @@ console.log('send');
 this.btn_status = (!this.btn_status);
 console.log(this.btn_status);
 
-//this.send('');
 }
 
 }
